@@ -1,5 +1,10 @@
 # Tauri + React + Typescript
 
+# Error Description:
+On macOS, Webview windows created in a Tauri v2 application with .transparent(true) render correctly (fully transparent backgrounds) when the app is launched via tauri dev, but those same windows lose transparency and appear as solid white rectangles after the project is packaged with tauri build --bundles dmg and run from the resulting DMG‑installed .app. The issue occurs even when "macOSPrivateApi": true is set in tauri.conf.json and the build is forced with TAURI_PRIVATE_API=1 and the tauri/macos-private-api feature. Thus, the transparency flag survives in the development build but is dropped or ignored during the bundling/signing phase, leading to inconsistent window behavior between dev and release builds.
+
+# To recreate:
+
 To recreate the error simply:
 1. Run 'bun install' to install dependencies
 2. Run 'bun run tauri dev', then 'open window' to see the transparent window
